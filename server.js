@@ -17,9 +17,9 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
 app.get("/scrape",(req,res)=>{
-    console.log("STARTING TO SCRAPE");
     request(website + "news/",(error,response,html)=>{
         const $ = cheerio.load(html);
+        console.log("####################################");
         $(".ng-thumbnail").each((i,element)=>{
             const newArticle = {
                 url: website + $(element).children().children(".ng-promo-title").children().attr("href"),
@@ -29,15 +29,29 @@ app.get("/scrape",(req,res)=>{
             };
             db.Article.findOne({"url":newArticle.url},(err,searchResults)=>{
                 if(!searchResults){
+                    console.log("+");
                     db.Article.create(newArticle);
                 }else{
-                    console.log("article already in database");
+                    console.log("=");
                 }
             });
         });
-        console.log("DONE SCRAPING");
+    });
+    res.send("Scrape Complete");
+});
+
+app.get("/articles", function(req, res) {
+    db.Article.find({})
+      .then(function(dbArticle) {
+        res.json(dbArticle);
+      })
+      .catch(function(err) {
+        res.json(err);
     });
 });
+  
+
+
 
 app.listen(PORT,()=>{
     console.log("Server Listening on http://localhost:" + PORT);
