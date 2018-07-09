@@ -16,6 +16,7 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/TestDB";
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
+// add NEW articles to db
 app.get("/scrape",(req,res)=>{
     console.log("SCRAPING");
     request(website + "news/",(error,response,html)=>{
@@ -37,6 +38,7 @@ app.get("/scrape",(req,res)=>{
     res.send("Scrape Complete");
 });
 
+// return all articles in db
 app.get("/articles", (req, res)=>{
     db.Article.find({})
       .then(dbArticles=>{
@@ -47,6 +49,7 @@ app.get("/articles", (req, res)=>{
     });
 });
 
+// return all notes in db
 app.get("/notes",(req,res)=>{
     db.Note.find({})
     .then(dbNotes=>{
@@ -57,6 +60,7 @@ app.get("/notes",(req,res)=>{
     });
 });
 
+// create new Note in db
 app.post("/newNote",(req,res)=>{
     const newNote = {
         belongsTo: req.body.belongsTo,
@@ -65,6 +69,7 @@ app.post("/newNote",(req,res)=>{
     db.Note.create(newNote);
 });
 
+//Start Server
 app.listen(PORT,()=>{
     console.log("Server Listening on http://localhost:" + PORT);
 });
