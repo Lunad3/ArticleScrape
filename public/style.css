@@ -1,8 +1,10 @@
 body{
     background-color: aqua;
+    padding: 20px;
 }
 
 .MyCard{
+    margin: 15px;
     width: 400px;
     background-color: aquamarine;
 }
@@ -31,8 +33,12 @@ body{
     1px 1px 0 #000;  
 }
 
-.MyCard-Content{
+.MyCard-ContentDiv{
+    padding: 5px 2px;
     word-wrap: break-word;
     background-color: orange;
 }
 
+.MyCard-Content{
+
+}
