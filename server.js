@@ -6,7 +6,7 @@ const request = require("request");
 const website = "https://www.nationalgeographic.org/";
 
 const db = require("./models");
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
