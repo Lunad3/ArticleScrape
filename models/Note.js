@@ -3,8 +3,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const NoteSchema = new Schema({
-    headline: String,
-    body: String
+    belongsTo:{
+        type: String,
+        required: true
+    },
+    body:{
+        type: String,
+        required: true
+    }
 });
 
 const Note = mongoose.model("Note",NoteSchema);

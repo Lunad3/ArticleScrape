@@ -4,6 +4,7 @@ body{
 }
 
 .MyCard{
+    display:inline-block;
     margin: 15px;
     width: 400px;
     background-color: aquamarine;
@@ -34,11 +35,7 @@ body{
 }
 
 .MyCard-ContentDiv{
-    padding: 5px 2px;
+    padding: 5px 15px;
     word-wrap: break-word;
     background-color: orange;
-}
-
-.MyCard-Content{
-
 }

@@ -37,18 +37,33 @@ app.get("/scrape",(req,res)=>{
     res.send("Scrape Complete");
 });
 
-app.get("/articles", function(req, res) {
+app.get("/articles", (req, res)=>{
     db.Article.find({})
-      .then(function(dbArticle) {
-        res.json(dbArticle);
+      .then(dbArticles=>{
+        res.json(dbArticles);
       })
       .catch(function(err) {
         res.json(err);
     });
 });
-  
 
+app.get("/notes",(req,res)=>{
+    db.Note.find({})
+    .then(dbNotes=>{
+        res.json(dbNotes);
+    })
+    .catch(err=>{
+        res.json(err);
+    });
+});
 
+app.post("/newNote",(req,res)=>{
+    const newNote = {
+        belongsTo: req.body.belongsTo,
+        body: req.body.body
+    }
+    db.Note.create(newNote);
+});
 
 app.listen(PORT,()=>{
     console.log("Server Listening on http://localhost:" + PORT);
