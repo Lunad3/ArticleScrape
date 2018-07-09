@@ -5,6 +5,8 @@ $.getJSON("/articles",(data)=>{
     }
 });
 
+
+
 $(document).on("click","p",()=>{
     $("#notes").empty();
     let thisId = $(this).attr("data-Id");

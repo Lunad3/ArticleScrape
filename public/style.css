@@ -1,0 +1,38 @@
+body{
+    background-color: aqua;
+}
+
+.MyCard{
+    width: 400px;
+    background-color: aquamarine;
+}
+
+.MyCard-ImageDiv{
+    height: 267px;
+    position:relative;
+    text-align: center;
+}
+
+.MyCard-Image{
+    width:100%;
+    height: 100%;
+}
+
+.MyCard-Title{
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    color: white;
+    font-weight: bold;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
+
+.MyCard-Content{
+    word-wrap: break-word;
+    background-color: orange;
+}
+

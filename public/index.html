@@ -4,13 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Materialize CSS Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <!-- Custom CSS Link -->
+    <link rel="stylesheet" href="style.css">
+
     <title>NG Scrape</title>
 </head>
-<body>
-    Hello World!
-    <div id="articles"></div>
+<body>Hello World!
+    <div id="articles">
+
+        <div class="MyCard">
+            <div class="MyCard-ImageDiv">
+                    <img class="MyCard-Image" src="images/testImage.jpeg" alt="WATERMELONE!">
+                <h4 class="MyCard-Title">THIS IS A LONG TITLE THAT IS TWICE AS LONG AS THE LAST ONE</h4>
+            </div>
+            <div class="MyCard-Content">
+                content
+            </div>
+        </div>
+
+    </div>
+
     <div id="notes"></div>
+
+
+
+    <!-- Materialize JS Link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+ 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Custom JS Link -->
     <script src="app.js"></script>
 </body>
 </html>

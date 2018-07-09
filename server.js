@@ -17,22 +17,19 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
 
 app.get("/scrape",(req,res)=>{
+    console.log("SCRAPING");
     request(website + "news/",(error,response,html)=>{
         const $ = cheerio.load(html);
-        console.log("####################################");
         $(".ng-thumbnail").each((i,element)=>{
             const newArticle = {
                 url: website + $(element).children().children(".ng-promo-title").children().attr("href"),
-                thumbnail: website + $(element).children().children(".ng-image-link").attr("href"),
+                thumbnail: $(element).children().children(".ng-image-link").children().attr("data-src"),
                 headline: $(element).children().children(".ng-promo-title").children().text(),
                 summary: $(element).children().children(".ng-margin-top").text()
             };
             db.Article.findOne({"url":newArticle.url},(err,searchResults)=>{
                 if(!searchResults){
-                    console.log("+");
                     db.Article.create(newArticle);
-                }else{
-                    console.log("=");
                 }
             });
         });
